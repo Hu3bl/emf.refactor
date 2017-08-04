@@ -1,0 +1,40 @@
+<site>
+	<feature id="org.eclipse.emf.refactor.basic.feature">
+    		<category name="EMF Refactor (Incubation)"/>
+   		</feature>
+	<feature id="org.eclipse.emf.refactor.henshin.feature">
+    		<category name="EMF Refactor - Specification Extensions (Incubation)"/>
+   		</feature>
+	<feature id="org.eclipse.emf.refactor.ocl.feature">
+	    	<category name="EMF Refactor - Specification Extensions (Incubation)"/>
+	   	</feature>
+	<feature id="org.eclipse.emf.refactor.comrel.feature">
+		    <category name="EMF Refactor - Specification Extensions (Incubation)"/>
+		</feature>
+	<feature id="org.eclipse.emf.refactor.papyrus.feature">
+	    	<category name="EMF Refactor - Runtime Extensions (Incubation)"/>
+	   	</feature>
+	<feature id="org.eclipse.emf.refactor.reporter.feature">
+	    	<category name="EMF Refactor - Runtime Extensions (Incubation)"/>
+	   	</feature>
+	<feature id="org.eclipse.emf.refactor.xtext.feature">
+		   	<category name="EMF Refactor - Runtime Extensions (Incubation)"/>
+		</feature>
+	<feature id="org.eclipse.emf.refactor.examples.feature">
+    		<category name="EMF Refactor - Basic Examples for Ecore and UML2.4 (Incubation)"/>
+   		</feature>
+	<feature id="org.eclipse.emf.refactor.examples.henshin.feature">
+	    	<category name="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)"/>
+	   	</feature>
+	<feature id="org.eclipse.emf.refactor.examples.ocl.feature">
+	    	<category name="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)"/>
+	   	</feature>
+	<feature id="org.eclipse.emf.refactor.examples.compositional.feature">
+	    	<category name="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)"/>
+	   	</feature>
+   	<category-def name="EMF Refactor (Incubation)" label="EMF Refactor (Incubation)"/>
+	<category-def name="EMF Refactor - Specification Extensions (Incubation)" label="EMF Refactor - Specification Extensions (Incubation)"/>
+	<category-def name="EMF Refactor - Runtime Extensions (Incubation)" label="EMF Refactor - Runtime Extensions (Incubation)"/>
+	<category-def name="EMF Refactor - Basic Examples for Ecore and UML2.4 (Incubation)" label="EMF Refactor - Basic Examples for Ecore and UML2.4 (Incubation)"/>
+	<category-def name="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)" label="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)"/>
+</site>

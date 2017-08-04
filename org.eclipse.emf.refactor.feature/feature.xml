@@ -4,16 +4,48 @@
       label="Feature"
       version="1.0.0.qualifier">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
-   </description>
+   <includes
+         id="org.eclipse.emf.refactor.basic.feature"
+         version="0.0.0"/>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
-   </copyright>
+   <includes
+         id="org.eclipse.emf.refactor.comrel.feature"
+         version="0.0.0"/>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
+   <includes
+         id="org.eclipse.emf.refactor.examples.compositional.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.refactor.examples.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.refactor.examples.henshin.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.refactor.examples.ocl.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.refactor.henshin.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.refactor.ocl.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.refactor.papyrus.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.refactor.reporter.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.refactor.xtext.feature"
+         version="0.0.0"/>
 
 </feature>
