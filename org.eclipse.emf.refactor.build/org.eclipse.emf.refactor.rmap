@@ -10,7 +10,7 @@
   <rm:searchPath name="emf.refactor.git">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature,buckminster" readerType="git">
       <rm:property key="git.remote.uri" value="https://github.com/Hu3bl/emf.refactor.git"/>
-      <rm:uri format="{0}/EMFRefactor/{1}">
+      <rm:uri format="{0}/EMFRefactor,{1}">
           <bc:propertyRef key="workspace.root" />
           <bc:propertyRef key="buckminster.component" />
         </rm:uri>
