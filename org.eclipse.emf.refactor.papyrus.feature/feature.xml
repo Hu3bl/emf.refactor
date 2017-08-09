@@ -131,16 +131,16 @@ Java and all Java-based trademarks are trademarks of Sun Microsystems, Inc. in t
       <import plugin="org.eclipse.emf.refactor.metrics.runtime" version="0.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.refactor.metrics.generator" version="0.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.6.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.facet.infra.browser.uicore" version="0.2.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.emf.refactor.refactoring" version="0.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.refactor.refactoring.generator" version="0.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.refactor.smells" version="0.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.refactor.smells.runtime" version="0.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.refactor.refactoring.configuration" version="0.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ltk.core.refactoring" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ltk.ui.refactoring" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.refactor.smells" version="0.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.refactor.smells.runtime" version="0.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.refactor.refactoring.papyrus" version="0.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.papyrus.infra.emf" version="1.0.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin
