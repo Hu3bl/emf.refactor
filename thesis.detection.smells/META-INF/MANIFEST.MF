@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: thesis.detection.smells;singleton:=true
-Export-Package: org.eclipse.emf.refactor.modelsmells
+Export-Package: org.eclipse.emf.refactor.smells.ecore
 Bundle-Name: Detection
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.em
