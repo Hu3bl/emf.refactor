@@ -3,7 +3,11 @@ Bundle-SymbolicName: thesis.detection.smells;singleton:=true
 Export-Package: org.eclipse.emf.refactor.smells.ecore
 Bundle-Name: Detection
 Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.emf.ecore,org.eclipse.emf.refactor.smells,org.eclipse.emf.refactor.metrics,org.eclipse.emf.common
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.em
+ f.ecore,org.eclipse.emf.refactor.smells,org.eclipse.emf.refactor.metr
+ ics,org.eclipse.emf.common
 Bundle-ManifestVersion: 2
 Bundle-Activator: thesis.detection.smells.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+
