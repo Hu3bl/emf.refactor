@@ -48,6 +48,10 @@
          id="org.eclipse.emf.refactor.xtext.feature"
          version="0.0.0"/>
 
+   <includes
+         id="thesis.detection.feature"
+         version="0.0.0"/>
+
    <plugin
          id="org.eclipse.emf.refactor.tests"
          download-size="0"
