@@ -7,4 +7,3 @@ Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.emf.ecore,or
 Bundle-ManifestVersion: 2
 Bundle-Activator: thesis.detection.smells.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy

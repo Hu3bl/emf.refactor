@@ -16,6 +16,19 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.refactor.smells"/>
+      <import plugin="org.eclipse.emf.refactor.metrics"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.junit"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.13.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.refactor.smells.runtime" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.refactor.smells" version="0.9.0" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="thesis.detection.metrics"
          download-size="0"
