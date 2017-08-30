@@ -13,9 +13,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.refactor.smells.runtime.core.ModelSmellFinder;
 import org.eclipse.emf.refactor.smells.runtime.core.Result;
+import org.eclipse.emf.refactor.modelsmells.DeepHierarchy;
+import org.eclipse.emf.refactor.modelsmells.WideHierarchy;
 import org.eclipse.emf.refactor.smells.core.*;
-import org.eclipse.emf.refactor.smells.ecore.DeepHierarchy;
-import org.eclipse.emf.refactor.smells.ecore.WideHierarchy;
 
 public class DetectionTests {
 

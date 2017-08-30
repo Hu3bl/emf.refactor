@@ -1,4 +1,4 @@
-package org.eclipse.emf.refactor.smells.ecore;
+package org.eclipse.emf.refactor.modelsmells;
 
 import java.util.LinkedList;
 import java.util.List;
