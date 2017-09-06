@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plugin>
 <extension point="org.eclipse.emf.refactor.smells">
-<modelsmell id="org.eclipse.emf.refactor.smells.ecore.deepHierarchy" modelsmell_description="Deep Hierarchy" modelsmell_finderclass="org.eclipse.emf.refactor.smells.ecore.DeepHierarchy" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="DeepHierarchy"/>
-<modelsmell id="org.eclipse.emf.modelsmell.wideHierachy" modelsmell_description="Wide Hierachy" modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.WideHierarchy" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="WideHierarchy"/>
+<modelsmell id="org.eclipse.emf.refactor.modelsmell.wideHieararchy" modelsmell_description="Wide Hierarchy" modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.WideHierarchy" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="WideHierarchy"/>
+<modelsmell id="org.eclipse.emf.refactor.modelsmell.deepHierarchy" modelsmell_description="Deep Hierarchy" modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.DeepHierarchy" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="DeepHierarchy"/>
 </extension>
 </plugin>

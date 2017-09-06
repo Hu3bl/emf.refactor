@@ -1,4 +1,4 @@
-package org.eclipse.emf.refactor.metrics.ecore;
+package org.eclipse.emf.refactor.metrics;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.refactor.metrics.interfaces.IMetricCalculator;
 
 public final class NEATC implements IMetricCalculator {
-		
+	
 	private List<EObject> context; 
 		
 	@Override

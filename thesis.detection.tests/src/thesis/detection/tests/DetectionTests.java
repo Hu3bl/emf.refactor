@@ -6,6 +6,8 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
+import thesis.detection.smells.DeepHierarchy;
+import thesis.detection.smells.WideHierarchy;
 import thesis.detection.util.EcoreBuilder;
 import thesis.detection.util.SmellFinder;
 
@@ -14,7 +16,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.refactor.smells.runtime.core.ModelSmellFinder;
 import org.eclipse.emf.refactor.smells.runtime.core.Result;
 import org.eclipse.emf.refactor.smells.core.*;
-import org.eclipse.emf.refactor.smells.ecore.DeepHierarchy;
 import org.eclipse.emf.refactor.modelsmell.*;
 
 public class DetectionTests {
