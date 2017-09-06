@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plugin>
 <extension point="org.eclipse.emf.refactor.metrics">
 <metric id="org.eclipse.emf.refactor.metrics.neatc" metric_calculate_class="org.eclipse.emf.refactor.metrics.NEATC" metric_context="EClass" metric_description="Number of equal EAttributes with other EClasses" metric_metamodel="http://www.eclipse.org/emf/2002/Ecore" metric_name="NEATC"/>
