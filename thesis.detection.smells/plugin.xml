@@ -3,5 +3,8 @@
 	<extension point="org.eclipse.emf.refactor.smells">
 		<modelsmell id="org.eclipse.emf.refactor.modelsmell.wideHieararchy" modelsmell_description="Wide Hierarchy" modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.WideHierarchy" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="WideHierarchy"/>
 		<modelsmell id="org.eclipse.emf.refactor.modelsmell.deepHierarchy" modelsmell_description="Deep Hierarchy" modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.DeepHierarchy" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="DeepHierarchy"/>
-	</extension>
+	<modelsmell id="org.eclipse.emf.refactor.modelsmell.missingAbstraction_DataClumpsAttributes" modelsmell_description="Missing Abstraction based on Data Clumps with Attributes" modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.MissingAbstraction_DataClumpsAttributes" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="MissingAbstraction_DataClumpsAttributes"/>
+<modelsmell id="org.eclipse.emf.refactor.modelsmell.missingAbstraction_PrimitiveObessionConstants" modelsmell_description="Missing Abstraction based on Primitive Obession with constants" modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.MissingAbstraction_PrimitiveObsessionConstants" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="MissingAbstraction_PrimitiveObsessionConstants"/>
+<modelsmell id="org.eclipse.emf.refactor.modelsmell.missingAbstraction_PrimitiveObessionPrimitiveTypes" modelsmell_description="Missing Abstraction based on Primitive Obession with primitive types" modelsmell_finderclass="org.eclipse.emf.refactor.modelsmell.MissingAbstraction_PrimitiveObessionPrimitiveTypes" modelsmell_metamodel="http://www.eclipse.org/emf/2002/Ecore" modelsmell_name="MissingAbstraction_PrimitiveObessionPrimitiveTypes"/>
+</extension>
 </plugin>
