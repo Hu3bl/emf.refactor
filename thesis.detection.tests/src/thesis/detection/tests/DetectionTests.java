@@ -8,7 +8,10 @@ import thesis.detection.util.EcoreBuilder;
 import thesis.detection.util.SmellFinder;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.refactor.smells.runtime.core.Result;
 import org.eclipse.emf.refactor.modelsmell.*;
 
@@ -44,7 +47,7 @@ public class DetectionTests {
 		testPackage.getEClassifiers().add(subType5);
 		EcoreBuilder.addSuperType(subType5, testPackage, superType.getName());
 		
-		//EcoreBuilder.savePackageToFile(testPackage, "wideHierarchy.ecore");	
+		EcoreBuilder.savePackageToFile(testPackage, "wideHierarchy.ecore");	
 				
 		Result result = SmellFinder.findMetricSmellWithLimit(new WideHierarchy(), 5, testPackage);
 		assertNotNull(result);
@@ -77,6 +80,8 @@ public class DetectionTests {
 		testPackage.getEClassifiers().add(subSubSubType);
 		EcoreBuilder.addSuperType(subSubSubType, testPackage, subSubType.getName());
 		
+		EcoreBuilder.savePackageToFile(testPackage, "deepHierarchy.ecore");	
+		
 		Result result = SmellFinder.findMetricSmellWithLimit(new DeepHierarchy(), 3, testPackage);
 		assertNotNull(result);
 		assertEquals(1,	result.getModelelements().size()); 	
@@ -85,4 +90,54 @@ public class DetectionTests {
 		assertNotNull(result);
 		assertEquals(0,	result.getModelelements().size()); 	
 	}
+	
+	@Test
+	public void validateMissingAbstraction_DataClumpsAttributesDetection() 
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass firstClass = EcoreBuilder.createEClass("FirstClass");
+		testPackage.getEClassifiers().add(firstClass);
+		EcoreBuilder.addAttribute(firstClass, "firstAttribute", EcorePackage.Literals.EDOUBLE, false, 0, 1);
+		EcoreBuilder.addAttribute(firstClass, "secondAttribute", EcorePackage.Literals.EINT, false, 0, 1);
+		
+		EClass secondClass = EcoreBuilder.createEClass("SecondClass");
+		testPackage.getEClassifiers().add(secondClass);
+		EcoreBuilder.addAttribute(secondClass, "firstAttribute", EcorePackage.Literals.EDOUBLE, false, 0, 1);
+		EcoreBuilder.addAttribute(secondClass, "secondAttribute", EcorePackage.Literals.EINT, false, 0, 1);
+		
+		EcoreBuilder.savePackageToFile(testPackage, "MissingAbstractionDataClumps.ecore");
+		
+		Result result = SmellFinder.findMetricSmellWithLimit(new MissingAbstraction_DataClumpsAttributes(), 1, testPackage);
+		assertNotNull(result);
+		assertEquals(2,	result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateMissingAbstraction_PrimitiveObessionPrimitiveTypesDetection() 
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass firstClass = EcoreBuilder.createEClass("FirstClass");
+		testPackage.getEClassifiers().add(firstClass);
+		EcoreBuilder.addAttribute(firstClass, "firstAttribute", EcorePackage.Literals.EINT, false, 0, 1);
+		EcoreBuilder.addAttribute(firstClass, "secondAttribute", EcorePackage.Literals.EINT, false, 0, 1);
+		
+		EClass secondClass = EcoreBuilder.createEClass("SecondClass");
+		testPackage.getEClassifiers().add(secondClass);
+		EcoreBuilder.addAttribute(secondClass, "firstAttribute", EcorePackage.Literals.EINT, false, 0, 1);
+		EcoreBuilder.addAttribute(secondClass, "secondAttribute", EcorePackage.Literals.EINT, false, 0, 1);
+		
+		EcoreBuilder.savePackageToFile(testPackage, "MissingAbstractionPrimitiveObsessionPrimitiveTypes.ecore");
+		
+		Result result = SmellFinder.findMetricSmellWithLimit(new MissingAbstraction_PrimitiveObessionPrimitiveTypes(), 1, testPackage);
+		assertNotNull(result);
+		assertEquals(2,	result.getModelelements().size());
+	}
+	
+	
 }

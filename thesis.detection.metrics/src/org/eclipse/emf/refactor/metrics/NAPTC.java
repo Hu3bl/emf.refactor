@@ -9,7 +9,7 @@ import org.eclipse.emf.refactor.metrics.ocl.managers.OCLManager;
 public final class NAPTC implements IMetricCalculator {
 
 	private final String expression = 
-		"self.ownedAttribute -> select(type <> null and type.oclIsKindOf(uml::PrimitiveType)) -> size()";	
+		"self.getEAttributes -> select(type <> null and type.oclIsKindOf(uml::PrimitiveType)) -> size()";	
 	private List<EObject> context; 
 		
 	@Override

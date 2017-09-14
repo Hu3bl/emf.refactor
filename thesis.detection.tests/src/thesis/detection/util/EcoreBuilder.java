@@ -42,6 +42,7 @@ public class EcoreBuilder
 		attribute.setID(isId);
 		attribute.setLowerBound(lowerBound);
 		attribute.setUpperBound(upperBound);
+		//attribute.set
 	}
 	
 	/**
