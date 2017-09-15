@@ -177,12 +177,5 @@ public class DetectionTests {
 		assertNotNull(result);
 		assertEquals(1, result.getModelelements().size());
 		assertEquals(4, result.getModelelements().get(0).size());
-		
-		//assertNotNull(result);
-		//assertEquals(2,	result.getModelelements().size());
-		
-		//result = SmellFinder.findMetricSmellWithLimit(new MissingAbstraction_PrimitiveObessionPrimitiveTypes(), 3, testPackage);
-		//assertNotNull(result);
-		//assertEquals(0,	result.getModelelements().size());
 	}
 }
