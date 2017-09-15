@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 import org.eclipse.emf.refactor.smells.runtime.core.Result;
 import org.eclipse.emf.refactor.modelsmell.*;
 
@@ -147,5 +148,41 @@ public class DetectionTests {
 		assertEquals(0,	result.getModelelements().size());
 	}
 	
-	
+	@Test
+	public void validateMultipathHierarchyDetection() 
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass supersuperClass = EcoreBuilder.createEClass("SuperSuperClass");
+		testPackage.getEClassifiers().add(supersuperClass);
+		
+		EClass firstSuperClass = EcoreBuilder.createEClass("FirstSuperClass");
+		testPackage.getEClassifiers().add(firstSuperClass);
+		EcoreBuilder.addSuperType(firstSuperClass, testPackage, "SuperSuperClass");
+		
+		EClass secondSuperClass = EcoreBuilder.createEClass("SecondSuperClass");
+		testPackage.getEClassifiers().add(secondSuperClass);
+		EcoreBuilder.addSuperType(secondSuperClass, testPackage, "SuperSuperClass");
+		
+		EClass derivedClass = EcoreBuilder.createEClass("DerivedClass");
+		testPackage.getEClassifiers().add(derivedClass);
+		EcoreBuilder.addSuperType(derivedClass, testPackage, "FirstSuperClass");
+		EcoreBuilder.addSuperType(derivedClass, testPackage, "SecondSuperClass");
+		
+		EcoreBuilder.savePackageToFile(testPackage, "MultipathHierarchy.ecore");
+				
+		Result result = SmellFinder.findSmell(new MultipathHierarchy(), testPackage);
+		assertNotNull(result);
+		assertEquals(1, result.getModelelements().size());
+		assertEquals(4, result.getModelelements().get(0).size());
+		
+		//assertNotNull(result);
+		//assertEquals(2,	result.getModelelements().size());
+		
+		//result = SmellFinder.findMetricSmellWithLimit(new MissingAbstraction_PrimitiveObessionPrimitiveTypes(), 3, testPackage);
+		//assertNotNull(result);
+		//assertEquals(0,	result.getModelelements().size());
+	}
 }

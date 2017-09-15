@@ -11,6 +11,15 @@ import org.eclipse.emf.refactor.smells.runtime.core.Result;
 
 public class SmellFinder 
 {
+	public static Result findSmell(IModelSmellFinder smellDetector, EObject rootObject)
+	{
+		if(smellDetector == null)
+		{
+			throw new NullPointerException();
+		}
+		return findModelSmell(smellDetector, rootObject);
+	}
+	
 	public static Result findMetricSmellWithLimit(MetricBasedModelSmellFinderClass smellDetector, double limit, EObject rootObject)
 	{
 		if(smellDetector == null)
