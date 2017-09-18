@@ -178,4 +178,93 @@ public class DetectionTests {
 		assertEquals(1, result.getModelelements().size());
 		assertEquals(4, result.getModelelements().get(0).size());
 	}
+	
+	@Test
+	public void validateUnutilizedAbstractionUnusedClassDetection_UnusedClasses_BothClassesAreDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		EClass superClass = EcoreBuilder.createEClass("SuperClass");
+		testPackage.getEClassifiers().add(superClass);
+		
+		EClass subClass = EcoreBuilder.createEClass("SubClass");
+		testPackage.getEClassifiers().add(subClass);
+		
+		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedClasses(), testPackage);
+		assertNotNull(result);
+		assertEquals(2, result.getModelelements().size());
+		assertEquals(1, result.getModelelements().get(0).size());
+		assertEquals(1, result.getModelelements().get(1).size());
+	}
+	
+	@Test
+	public void validateUnutilizedAbstractionUnusedClassDetection_UsedAsSuperType_NoClassDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		EClass superClass = EcoreBuilder.createEClass("SuperClass");
+		testPackage.getEClassifiers().add(superClass);
+		
+		EClass subClass = EcoreBuilder.createEClass("SubClass");
+		testPackage.getEClassifiers().add(subClass);
+		EcoreBuilder.addSuperType(subClass, testPackage, "SuperClass");
+		
+		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedClasses(), testPackage);
+		assertNotNull(result);
+		assertEquals(0, result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateUnutilizedAbstractionUnusedClassDetection_UsedAsType_ReferencingClassDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		EClass superClass = EcoreBuilder.createEClass("SuperClass");
+		testPackage.getEClassifiers().add(superClass);
+		
+		EClass subClass = EcoreBuilder.createEClass("SubClass");
+		testPackage.getEClassifiers().add(subClass);
+		EcoreBuilder.addReference(subClass, "testReference", superClass, 0, 1);
+		
+		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedClasses(), testPackage);
+		assertNotNull(result);
+		assertEquals(1, result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateUnutilizedAbstractionUnusedEnumDetection_Unused_EnumDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EEnum eEnum = EcoreBuilder.createEEnum("TestEnum");
+		EcoreBuilder.addEEnumLiteral(eEnum, "firstLiteral", 0);
+		testPackage.getEClassifiers().add(eEnum);
+		
+		EClass superClass = EcoreBuilder.createEClass("SuperClass");
+		testPackage.getEClassifiers().add(superClass);
+		
+		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedEnumeration(), testPackage);
+		assertNotNull(result);
+		assertEquals(1, result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateUnutilizedAbstractionUnusedEnumDetection_UsedAsType_NoClassDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EEnum eEnum = EcoreBuilder.createEEnum("TestEnum");
+		EcoreBuilder.addEEnumLiteral(eEnum, "firstLiteral", 0);
+		testPackage.getEClassifiers().add(eEnum);
+		
+		EClass superClass = EcoreBuilder.createEClass("SuperClass");
+		testPackage.getEClassifiers().add(superClass);
+		EcoreBuilder.addReference(superClass, "testRef", eEnum, 0, 1);
+		
+		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedEnumeration(), testPackage);
+		assertNotNull(result);
+		assertEquals(0, result.getModelelements().size());
+	}
 }

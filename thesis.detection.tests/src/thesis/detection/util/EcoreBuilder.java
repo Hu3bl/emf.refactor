@@ -7,6 +7,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -65,6 +67,21 @@ public class EcoreBuilder
 	}
 	
 	/**
+	 * Adds a EEnumLiteral to an EEnum
+	 * @param context EEnum, where to add the literal.
+	 * @param name Name of the literal.
+	 * @param value Value of the literal.
+	 */
+	public static void addEEnumLiteral(EEnum context, String name,
+			int value)
+	{
+		final EEnumLiteral enumLiteral = EcoreFactory.eINSTANCE.createEEnumLiteral();
+		context.getELiterals().add(enumLiteral);
+		enumLiteral.setName(name);
+		enumLiteral.setValue(value);
+	}
+	
+	/**
 	 * Creates a new EPackage.
 	 * @param name Name of EPackage to create.
 	 * @param prefix Prefix of EPackage.
@@ -92,6 +109,18 @@ public class EcoreBuilder
         eClass.setName(name);
         return eClass;
     }
+    
+    /**
+     * Create a new EEnum.
+     * @param name Name of EEnum to create.
+     * @return EEnum with specified name.
+     */
+    public static EEnum createEEnum(final String name)
+    {
+    	final EEnum eEnum = EcoreFactory.eINSTANCE.createEEnum();
+    	eEnum.setName(name);
+    	return eEnum;
+    }  
 	
     /**
      * Adds a supertype to an EClass.
