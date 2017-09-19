@@ -48,7 +48,7 @@ public class DetectionTests {
 		testPackage.getEClassifiers().add(subType5);
 		EcoreBuilder.addSuperType(subType5, testPackage, superType.getName());
 		
-		EcoreBuilder.savePackageToFile(testPackage, "wideHierarchy.ecore");	
+		EcoreBuilder.savePackageToFile(testPackage, "WideHierarchy.ecore");	
 				
 		Result result = SmellFinder.findMetricSmellWithLimit(new WideHierarchy(), 5, testPackage);
 		assertNotNull(result);
@@ -81,7 +81,7 @@ public class DetectionTests {
 		testPackage.getEClassifiers().add(subSubSubType);
 		EcoreBuilder.addSuperType(subSubSubType, testPackage, subSubType.getName());
 		
-		EcoreBuilder.savePackageToFile(testPackage, "deepHierarchy.ecore");	
+		EcoreBuilder.savePackageToFile(testPackage, "DeepHierarchy.ecore");	
 		
 		Result result = SmellFinder.findMetricSmellWithLimit(new DeepHierarchy(), 3, testPackage);
 		assertNotNull(result);
