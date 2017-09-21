@@ -52,18 +52,48 @@ public class EcoreBuilder
 	 * @param context EClass, where to add the reference.
 	 * @param name Name of the reference.
 	 * @param type Type of the reference.
+	 * @param containment Is this reference a containment?
 	 * @param lowerBound
 	 * @param upperBound
 	 */
 	public static void addReference(EClass context, String name,
-			EClassifier type, int lowerBound, int upperBound)
+			EClassifier type, boolean containment, int lowerBound, int upperBound)
 	{
 		final EReference reference = EcoreFactory.eINSTANCE.createEReference();
 		context.getEStructuralFeatures().add(reference);
 		reference.setName(name);
 		reference.setEType(type);
+		reference.setContainment(containment);
 		reference.setLowerBound(lowerBound);
 		reference.setUpperBound(upperBound);
+	}
+	
+	public static void makeOppositeReference(EClass firstClass, String firstReferenceName, EClass secondClass, String secondReferenceName) 
+	{
+		EReference firstReference = null;
+		EReference secondReference = null;
+		
+		for(EReference currentReference : firstClass.getEAllReferences())
+		{
+			if(currentReference.getName().equals(firstReferenceName))
+			{
+				firstReference = currentReference;
+			}
+		}
+		
+		for(EReference currentReference : secondClass.getEAllReferences())
+		{
+			if(currentReference.getName().equals(secondReferenceName))
+			{
+				secondReference = currentReference;
+			}
+		}
+		
+		if(firstReference != null && secondReference != null)
+		{
+			firstReference.setEOpposite(secondReference);
+			secondReference.setEOpposite(firstReference);
+		}	
 	}
 	
 	/**
