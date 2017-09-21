@@ -376,4 +376,86 @@ public class DetectionTests {
 		assertNotNull(result);
 		assertEquals(0, result.getModelelements().size());
 	}
+	
+	@Test
+	public void validateHubLikeModularizationIncomingDependencies_DifferentLimits()
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass hubClass = EcoreBuilder.createEClass("HubClass");
+		testPackage.getEClassifiers().add(hubClass);
+		
+		EClass class1 = EcoreBuilder.createEClass("Class1");
+		testPackage.getEClassifiers().add(class1);
+		EcoreBuilder.addReference(class1, "testReference", hubClass, false, 0, 1);
+		
+		EClass class2 = EcoreBuilder.createEClass("Class2");
+		testPackage.getEClassifiers().add(class2);
+		EcoreBuilder.addReference(class2, "testReference", hubClass, false, 0, 1);
+		
+		EClass class3 = EcoreBuilder.createEClass("Class3");
+		testPackage.getEClassifiers().add(class3);
+		EcoreBuilder.addReference(class3, "testReference", hubClass, false, 0, 1);
+		
+		EClass class4 = EcoreBuilder.createEClass("Class4");
+		testPackage.getEClassifiers().add(class4);
+		EcoreBuilder.addReference(class4, "testReference", hubClass, false, 0, 1);
+		
+		EClass class5 = EcoreBuilder.createEClass("Class5");
+		testPackage.getEClassifiers().add(class5);
+		EcoreBuilder.addReference(class5, "testReference", hubClass, false, 0, 1);
+		
+		EcoreBuilder.savePackageToFile(testPackage, "HubLike_Incoming.ecore");	
+				
+		Result result = SmellFinder.findMetricSmellWithLimit(new HubLikeModularization_IncomingDependencies(), 5, testPackage);
+		assertNotNull(result);
+		assertEquals(1,	result.getModelelements().size()); 	
+		
+		result = SmellFinder.findMetricSmellWithLimit(new HubLikeModularization_IncomingDependencies(), 6, testPackage);
+		assertNotNull(result);
+		assertEquals(0,	result.getModelelements().size()); 	
+	}
+	
+	@Test
+	public void validateHubLikeModularizationOutgoingDependencies_DifferentLimits()
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass hubClass = EcoreBuilder.createEClass("HubClass");
+		testPackage.getEClassifiers().add(hubClass);
+		
+		EClass class1 = EcoreBuilder.createEClass("Class1");
+		testPackage.getEClassifiers().add(class1);
+		EcoreBuilder.addReference(hubClass, "testReference1", class1, false, 0, 1);
+		
+		EClass class2 = EcoreBuilder.createEClass("Class2");
+		testPackage.getEClassifiers().add(class2);
+		EcoreBuilder.addReference(hubClass, "testReference2", class2, false, 0, 1);
+		
+		EClass class3 = EcoreBuilder.createEClass("Class3");
+		testPackage.getEClassifiers().add(class3);
+		EcoreBuilder.addReference(hubClass, "testReference3", class3, false, 0, 1);
+		
+		EClass class4 = EcoreBuilder.createEClass("Class4");
+		testPackage.getEClassifiers().add(class4);
+		EcoreBuilder.addReference(hubClass, "testReference4", class4, false, 0, 1);
+		
+		EClass class5 = EcoreBuilder.createEClass("Class5");
+		testPackage.getEClassifiers().add(class5);
+		EcoreBuilder.addReference(hubClass, "testReference5", class5, false, 0, 1);
+		
+		EcoreBuilder.savePackageToFile(testPackage, "HubLike_Outgoing.ecore");	
+				
+		Result result = SmellFinder.findMetricSmellWithLimit(new HubLikeModularization_OutgoingDependencies(), 5, testPackage);
+		assertNotNull(result);
+		assertEquals(1,	result.getModelelements().size()); 	
+		
+		result = SmellFinder.findMetricSmellWithLimit(new HubLikeModularization_OutgoingDependencies(), 6, testPackage);
+		assertNotNull(result);
+		assertEquals(0,	result.getModelelements().size()); 	
+	}
 }
