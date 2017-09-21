@@ -291,4 +291,89 @@ public class DetectionTests {
 		assertNotNull(result);
 		assertEquals(1, result.getModelelements().size());
 	}
+	
+	@Test
+	public void validateSpecializationAggregration_SpecialAggrToSubClass_ClassIsDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass firstClass = EcoreBuilder.createEClass("FirstClass");
+		testPackage.getEClassifiers().add(firstClass);
+		
+		EClass secondClass = EcoreBuilder.createEClass("SecondClass");
+		testPackage.getEClassifiers().add(secondClass);
+		
+		EClass firstSubClass = EcoreBuilder.createEClass("FirstSubClass");
+		testPackage.getEClassifiers().add(firstSubClass);
+		EcoreBuilder.addSuperType(firstSubClass, testPackage, "FirstClass");
+		
+		EClass secondSubClass = EcoreBuilder.createEClass("SecondSubClass");
+		testPackage.getEClassifiers().add(secondSubClass);
+		EcoreBuilder.addSuperType(secondSubClass, testPackage, "SecondClass");
+		
+		EcoreBuilder.addReference(firstClass, "testReference", secondClass, false, 0, 1);
+		EcoreBuilder.addReference(firstSubClass, "specializationReference", secondSubClass, false, 0, 1);	
+		
+		EcoreBuilder.savePackageToFile(testPackage, "SpecializationAggregation.ecore");
+		
+		Result result = SmellFinder.findSmell(new SpecializationAggregation(), testPackage);
+		assertNotNull(result);
+		assertEquals(1, result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateSpecializationAggregration_SpecialAggrToSuperClass_ClassIsDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass firstClass = EcoreBuilder.createEClass("FirstClass");
+		testPackage.getEClassifiers().add(firstClass);
+		
+		EClass secondClass = EcoreBuilder.createEClass("SecondClass");
+		testPackage.getEClassifiers().add(secondClass);
+		
+		EClass firstSubClass = EcoreBuilder.createEClass("FirstSubClass");
+		testPackage.getEClassifiers().add(firstSubClass);
+		EcoreBuilder.addSuperType(firstSubClass, testPackage, "FirstClass");
+		
+		EClass secondSubClass = EcoreBuilder.createEClass("SecondSubClass");
+		testPackage.getEClassifiers().add(secondSubClass);
+		EcoreBuilder.addSuperType(secondSubClass, testPackage, "SecondClass");
+		
+		EcoreBuilder.addReference(firstClass, "testReference", secondClass, false, 0, 1);
+		EcoreBuilder.addReference(firstSubClass, "specializationReference", secondClass, false, 0, 1);	
+		
+		Result result = SmellFinder.findSmell(new SpecializationAggregation(), testPackage);
+		assertNotNull(result);
+		assertEquals(1, result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateSpecializationAggregration_NoSpecialAggr_NoClassIsDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass firstClass = EcoreBuilder.createEClass("FirstClass");
+		testPackage.getEClassifiers().add(firstClass);
+		
+		EClass secondClass = EcoreBuilder.createEClass("SecondClass");
+		testPackage.getEClassifiers().add(secondClass);
+		
+		EClass firstSubClass = EcoreBuilder.createEClass("FirstSubClass");
+		testPackage.getEClassifiers().add(firstSubClass);
+		EcoreBuilder.addSuperType(firstSubClass, testPackage, "FirstClass");
+		
+		EClass secondSubClass = EcoreBuilder.createEClass("SecondSubClass");
+		testPackage.getEClassifiers().add(secondSubClass);
+		EcoreBuilder.addSuperType(secondSubClass, testPackage, "SecondClass");
+		
+		EcoreBuilder.addReference(firstClass, "testReference", secondClass, false, 0, 1);
+		
+		Result result = SmellFinder.findSmell(new SpecializationAggregation(), testPackage);
+		assertNotNull(result);
+		assertEquals(0, result.getModelelements().size());
+	}
 }

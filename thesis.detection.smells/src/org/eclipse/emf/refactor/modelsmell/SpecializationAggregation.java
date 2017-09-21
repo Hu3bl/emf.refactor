@@ -19,18 +19,40 @@ public final class SpecializationAggregation implements IModelSmellFinder {
 		List<EClass> classes = DetectionHelper.getAllEClasses(root);
 		for(EClass currentClass : classes)
 		{
-			//if(hasClassRedundantContainerRelation(currentClass, classes))
-			//{
-			//	LinkedList<EObject> result = new LinkedList<EObject>();
-			//	result.add(currentClass);
-			//	result.addAll(foundClassesWithOppositeReference);
-			//	foundClassesWithOppositeReference.clear();
-			//	results.add(result);
-			//}
+			if(hasClassSpecializationAggregation(currentClass))
+			{
+				LinkedList<EObject> result = new LinkedList<EObject>();
+				result.add(currentClass);
+				results.add(result);
+			}
 		}		
 		
 		return results;
 	}	
 	
-	//private boolean 
+	private boolean hasClassSpecializationAggregation(EClass currentClass)
+	{
+		for(EReference reference : currentClass.getEAllReferences())
+		{
+			for(EReference localReference: currentClass.getEReferences())
+			{
+				if(reference != localReference)
+				{
+					EClass referenceClass = reference.getEReferenceType();
+					EClass localReferenceClass = localReference.getEReferenceType();
+					
+					if(referenceClass.equals(localReferenceClass))
+					{
+						return true;
+					}
+					
+					if(referenceClass.isSuperTypeOf(localReferenceClass))
+					{
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 }
