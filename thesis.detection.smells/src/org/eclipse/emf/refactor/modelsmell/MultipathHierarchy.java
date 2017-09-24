@@ -9,6 +9,11 @@ import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 
 import thesis.detection.smells.util.DetectionHelper;
 
+/**
+ * This class detects if the same EClass inherits from the same EClass over different pathes.
+ * @author renehahn
+ *
+ */
 public final class MultipathHierarchy implements IModelSmellFinder {
 
 	@Override
@@ -36,6 +41,7 @@ public final class MultipathHierarchy implements IModelSmellFinder {
 							if (superclasses2.contains(superclass)) 
 							{
 								LinkedList<EObject> result = new LinkedList<EObject>();
+								// add class itself, the starting classes of the different pathes and the endpoint to the result
 								result.add(cl);
 								result.add(cl1);
 								result.add(cl2);

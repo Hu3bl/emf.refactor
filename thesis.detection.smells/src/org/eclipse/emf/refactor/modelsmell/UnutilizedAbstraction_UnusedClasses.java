@@ -10,7 +10,11 @@ import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 
 import thesis.detection.smells.util.DetectionHelper;
 
-
+/**
+ * This class checks if a EClass is unused
+ * @author renehahn
+ *
+ */
 public final class UnutilizedAbstraction_UnusedClasses implements IModelSmellFinder {
 
 	@Override

@@ -7,7 +7,11 @@ import org.eclipse.emf.refactor.metrics.core.Metric;
 import org.eclipse.emf.refactor.metrics.interfaces.IMetricCalculator;
 import org.eclipse.emf.refactor.smells.core.MetricBasedModelSmellFinderClass;
 
-
+/**
+ * Checks the count of outgoing dependencies on the given classes
+ * @author renehahn
+ *
+ */
 public final class HubLikeModularization_OutgoingDependencies extends MetricBasedModelSmellFinderClass {
 
 	private String metricId = "org.eclipse.emf.refactor.metrics.nodtc";

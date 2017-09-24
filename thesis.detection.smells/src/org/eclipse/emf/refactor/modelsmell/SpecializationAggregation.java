@@ -10,7 +10,11 @@ import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 
 import thesis.detection.smells.util.DetectionHelper;
 
-
+/**
+ * This clas investigates if a subclass defines a specialization relation to a already refered type.
+ * @author renehahn
+ *
+ */
 public final class SpecializationAggregation implements IModelSmellFinder {
 
 	@Override

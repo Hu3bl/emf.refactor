@@ -4,7 +4,11 @@ import java.util.LinkedList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 
-
+/**
+ * This class checks if there is a cylce in the hierarchy
+ * @author renehahn
+ *
+ */
 public final class CyclicHierarchy implements IModelSmellFinder {
 
 	@Override

@@ -7,7 +7,11 @@ import org.eclipse.emf.refactor.metrics.core.Metric;
 import org.eclipse.emf.refactor.metrics.interfaces.IMetricCalculator;
 import org.eclipse.emf.refactor.smells.core.MetricBasedModelSmellFinderClass;
 
-
+/**
+ * This class checks if a hierarchy is exessivly wide.
+ * @author renehahn
+ *
+ */
 public final class WideHierarchy extends MetricBasedModelSmellFinderClass {
 
 	private String metricId = "org.eclipse.emf.refactor.metrics.ecore.nsubec";

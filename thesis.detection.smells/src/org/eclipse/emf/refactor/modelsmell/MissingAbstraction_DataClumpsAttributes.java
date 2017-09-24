@@ -7,7 +7,11 @@ import org.eclipse.emf.refactor.metrics.core.Metric;
 import org.eclipse.emf.refactor.metrics.interfaces.IMetricCalculator;
 import org.eclipse.emf.refactor.smells.core.MetricBasedModelSmellFinderClass;
 
-
+/**
+ * Checks the number of equal EAttributes to other EClasses
+ * @author renehahn
+ *
+ */
 public final class MissingAbstraction_DataClumpsAttributes extends MetricBasedModelSmellFinderClass {
 
 	private String metricId = "org.eclipse.emf.refactor.metrics.neatc";

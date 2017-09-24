@@ -7,7 +7,11 @@ import org.eclipse.emf.refactor.metrics.core.Metric;
 import org.eclipse.emf.refactor.metrics.interfaces.IMetricCalculator;
 import org.eclipse.emf.refactor.smells.core.MetricBasedModelSmellFinderClass;
 
-
+/**
+ * Checks if a hierarchy is excessively deep
+ * @author renehahn
+ *
+ */
 public final class DeepHierarchy extends MetricBasedModelSmellFinderClass {
 
 	private String metricId = "org.eclipse.emf.refactor.metrics.ecore.maxditec";
