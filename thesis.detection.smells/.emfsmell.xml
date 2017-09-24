@@ -23,7 +23,7 @@
 </modelsmell>
 <modelsmell>
 <modelsmellId>org.eclipse.emf.refactor.modelsmell.deepHierarchy</modelsmellId>
-<metric_limit>3.0</metric_limit>
+<metric_limit>5.0</metric_limit>
 </modelsmell>
 <modelsmell>
 <modelsmellId>org.eclipse.emf.refactor.smells.uml24.diamondinheritance</modelsmellId>
@@ -39,11 +39,11 @@
 </modelsmell>
 <modelsmell>
 <modelsmellId>org.eclipse.emf.refactor.modelsmell.hubLikeModularization_IncomingDependencies</modelsmellId>
-<metric_limit>4.0</metric_limit>
+<metric_limit>5.0</metric_limit>
 </modelsmell>
 <modelsmell>
 <modelsmellId>org.eclipse.emf.refactor.modelsmell.hubLikeModularization</modelsmellId>
-<metric_limit>4.0</metric_limit>
+<metric_limit>5.0</metric_limit>
 </modelsmell>
 <modelsmell>
 <modelsmellId>org.eclipse.emf.refactor.smells.uml24.largeclass</modelsmellId>
