@@ -15,16 +15,26 @@ public final class MultipathHierarchy implements IModelSmellFinder {
 	public LinkedList<LinkedList<EObject>> findSmell(EObject root) {
 		LinkedList<LinkedList<EObject>> results = new LinkedList<LinkedList<EObject>>();
 		List<EClass> classes = DetectionHelper.getAllEClasses(root);
-		for (EClass cl : classes) {
-			if (cl.getESuperTypes().size() > 1) {
-				for (int i = 0; i < cl.getESuperTypes().size(); i++) {
+		for (EClass cl : classes) 
+		{
+			// investigate only if more than one supertype is available
+			if (cl.getESuperTypes().size() > 1) 
+			{
+				for (int i = 0; i < cl.getESuperTypes().size(); i++) 
+				{
 					EClass cl1 = cl.getESuperTypes().get(i);
-					for (int j = (i + 1); j < cl.getESuperTypes().size(); j++) {
+					// int j = (i+j) is required to not investigate the same supertype again.
+					// Otherwise the result contains the same smell twice.
+					for (int j = (i + 1); j < cl.getESuperTypes().size(); j++) 
+					{
 						EClass cl2 = cl.getESuperTypes().get(j);
+						
 						List<EClass> superclasses1 = DetectionHelper.getAllESuperclasses(cl1);
 						List<EClass> superclasses2 = DetectionHelper.getAllESuperclasses(cl2);
-						for (EClass superclass : superclasses1) {
-							if (superclasses2.contains(superclass)) {
+						for (EClass superclass : superclasses1) 
+						{
+							if (superclasses2.contains(superclass)) 
+							{
 								LinkedList<EObject> result = new LinkedList<EObject>();
 								result.add(cl);
 								result.add(cl1);
