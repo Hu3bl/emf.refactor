@@ -7,7 +7,11 @@ import org.eclipse.emf.refactor.metrics.core.Metric;
 import org.eclipse.emf.refactor.metrics.interfaces.IMetricCalculator;
 import org.eclipse.emf.refactor.smells.core.MetricBasedModelSmellFinderClass;
 
-
+/**
+ * Checks if a EClass contains a lot of EAttributes of primitive types.
+ * @author renehahn
+ *
+ */
 public final class MissingAbstraction_PrimitiveObessionPrimitiveTypes extends MetricBasedModelSmellFinderClass {
 
 	private String metricId = "org.eclipse.emf.refactor.metrics.naptc";

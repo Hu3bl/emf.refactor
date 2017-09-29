@@ -11,7 +11,11 @@ import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 
 import thesis.detection.smells.util.DetectionHelper;
 
-
+/**
+ * This class checks if a EEnum is unused
+ * @author renehahn
+ *
+ */
 public final class UnutilizedAbstraction_UnusedEnumeration implements IModelSmellFinder {
 
 	@Override
