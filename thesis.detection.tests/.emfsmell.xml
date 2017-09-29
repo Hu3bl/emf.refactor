@@ -38,6 +38,14 @@
 <modelsmellId>org.eclipse.emf.refactor.smells.uml24.henshin.equallynamedclasses</modelsmellId>
 </modelsmell>
 <modelsmell>
+<modelsmellId>org.eclipse.emf.refactor.modelsmell.hubLikeModularization_IncomingDependencies</modelsmellId>
+<metric_limit>1.0</metric_limit>
+</modelsmell>
+<modelsmell>
+<modelsmellId>org.eclipse.emf.refactor.modelsmell.hubLikeModularization</modelsmellId>
+<metric_limit>1.0</metric_limit>
+</modelsmell>
+<modelsmell>
 <modelsmellId>org.eclipse.emf.refactor.smells.uml24.largeclass</modelsmellId>
 <metric_limit>1.0</metric_limit>
 </modelsmell>
@@ -81,7 +89,7 @@
 <modelsmellId>org.eclipse.emf.refactor.smells.uml24.henshin.specializationaggregation</modelsmellId>
 </modelsmell>
 <modelsmell>
-<modelsmellId>org.eclipse.emf.refactor.modelsmell.specializationAggregation</modelsmellId>
+<modelsmellId>org.eclipse.emf.refactor.modelsmell.specialiazation_Aggregation</modelsmellId>
 </modelsmell>
 <modelsmell>
 <modelsmellId>org.eclipse.emf.refactor.smells.uml24.henshin.speculativegeneralityclass</modelsmellId>
