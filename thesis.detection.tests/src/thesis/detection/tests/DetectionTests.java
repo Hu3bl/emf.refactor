@@ -77,7 +77,7 @@ public class DetectionTests {
 		testPackage.getEClassifiers().add(subSubType);
 		EcoreBuilder.addSuperType(subSubType, testPackage, subType.getName());
 		
-		EClass subSubSubType = EcoreBuilder.createEClass("SubSubType");
+		EClass subSubSubType = EcoreBuilder.createEClass("SubSubSubType");
 		testPackage.getEClassifiers().add(subSubSubType);
 		EcoreBuilder.addSuperType(subSubSubType, testPackage, subSubType.getName());
 		
@@ -457,5 +457,36 @@ public class DetectionTests {
 		result = SmellFinder.findMetricSmellWithLimit(new HubLikeModularization_OutgoingDependencies(), 6, testPackage);
 		assertNotNull(result);
 		assertEquals(0,	result.getModelelements().size()); 	
+	}
+	
+	@Test
+	public void validateCyclicHierarchyDetection()
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass superType = EcoreBuilder.createEClass("SuperType");
+		testPackage.getEClassifiers().add(superType);
+		
+		EClass subType = EcoreBuilder.createEClass("SubType");
+		testPackage.getEClassifiers().add(subType);
+		EcoreBuilder.addSuperType(subType, testPackage, superType.getName());
+		
+		EClass subSubType = EcoreBuilder.createEClass("SubSubType");
+		testPackage.getEClassifiers().add(subSubType);
+		EcoreBuilder.addSuperType(subSubType, testPackage, subType.getName());
+		
+		EClass subSubSubType = EcoreBuilder.createEClass("SubSubSubType");
+		testPackage.getEClassifiers().add(subSubSubType);
+		EcoreBuilder.addSuperType(subSubSubType, testPackage, subSubType.getName());
+		
+		EcoreBuilder.addSuperType(superType, testPackage, "SubSubSubType");
+		
+		EcoreBuilder.savePackageToFile(testPackage, "CyclicHierarchy.ecore");	
+		
+		Result result = SmellFinder.findSmell(new CyclicHierarchy(), testPackage);
+		assertNotNull(result);
+		assertEquals(4, result.getModelelements().size());
 	}
 }

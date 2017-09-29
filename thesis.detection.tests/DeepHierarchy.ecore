@@ -4,5 +4,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="SuperType"/>
   <eClassifiers xsi:type="ecore:EClass" name="SubType" eSuperTypes="DeepHierarchy.ecore#//SuperType"/>
   <eClassifiers xsi:type="ecore:EClass" name="SubSubType" eSuperTypes="DeepHierarchy.ecore#//SubType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SubSubType" eSuperTypes="DeepHierarchy.ecore#//SubSubType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SubSubSubType" eSuperTypes="DeepHierarchy.ecore#//SubSubType"/>
 </ecore:EPackage>
