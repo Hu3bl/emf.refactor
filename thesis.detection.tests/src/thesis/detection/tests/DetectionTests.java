@@ -281,13 +281,35 @@ public class DetectionTests {
 		testPackage.getEClassifiers().add(secondClass);
 		
 		EcoreBuilder.addReference(firstClass, "testReference", secondClass, true, 0, 1);
-		EcoreBuilder.addReference(firstClass, "explicitReference", secondClass, false, 0, 1);
 		EcoreBuilder.addReference(secondClass, "referencingReference", firstClass, false, 0, 1);
-		EcoreBuilder.makeOppositeReference(firstClass, "explicitReference", secondClass, "referencingReference");		
+		EcoreBuilder.makeOppositeReference(firstClass, "testReference", secondClass, "referencingReference");		
 		
 		EcoreBuilder.savePackageToFile(testPackage, "RedundantContainerRelation.ecore");
 		
 		Result result = SmellFinder.findSmell(new RedundantContainerRelation(), testPackage);
+		assertNotNull(result);
+		assertEquals(1, result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateObligatoryContainerRelation_ExplicitReference_ClassIsDetected()
+	{
+		EcoreBuilder.initStandalone();
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass firstClass = EcoreBuilder.createEClass("FirstClass");
+		testPackage.getEClassifiers().add(firstClass);
+		
+		EClass secondClass = EcoreBuilder.createEClass("SecondClass");
+		testPackage.getEClassifiers().add(secondClass);
+		
+		EcoreBuilder.addReference(firstClass, "testReference", secondClass, true, 0, 1);
+		EcoreBuilder.addReference(secondClass, "referencingReference", firstClass, false, 1, 1);
+		EcoreBuilder.makeOppositeReference(firstClass, "testReference", secondClass, "referencingReference");		
+		
+		EcoreBuilder.savePackageToFile(testPackage, "ObligatoryContainerRelation.ecore");
+		
+		Result result = SmellFinder.findSmell(new ObligatoryContainerRelation(), testPackage);
 		assertNotNull(result);
 		assertEquals(1, result.getModelelements().size());
 	}
