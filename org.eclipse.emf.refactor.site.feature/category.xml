@@ -40,5 +40,5 @@
 	<category-def name="EMF Refactor - Runtime Extensions (Incubation)" label="EMF Refactor - Runtime Extensions (Incubation)"/>
 	<category-def name="EMF Refactor - Basic Examples for Ecore and UML2.4 (Incubation)" label="EMF Refactor - Basic Examples for Ecore and UML2.4 (Incubation)"/>
 	<category-def name="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)" label="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)"/>
-	<category-def name="EMF Refactor - Thesis Extension" label="EMF Refactor - Thesis Extension"/>
+	<category-def name="EMF Refactor - Ecore Smells Extension" label="EMF Refactor - Ecore Smells Extension"/>
 </site>
