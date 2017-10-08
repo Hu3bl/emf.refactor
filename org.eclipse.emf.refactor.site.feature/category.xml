@@ -33,7 +33,7 @@
 	    	<category name="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)"/>
 	   	</feature>
 	<feature id="thesis.detection.feature">
-	 	<category name="EMF Refactor - Thesis Extension"/>
+	 	<category name="EMF Refactor - Ecore Smells Extension"/>
 	</feature>
    	<category-def name="EMF Refactor (Incubation)" label="EMF Refactor (Incubation)"/>
 	<category-def name="EMF Refactor - Specification Extensions (Incubation)" label="EMF Refactor - Specification Extensions (Incubation)"/>
