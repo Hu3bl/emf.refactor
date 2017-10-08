@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="thesis.detection.feature"
-      label="EMF Refactor  - Thesis Extension"
+      label="EMF Refactor - Ecore Smells Extension"
       version="1.0.0.qualifier">
 
    <description>
-      EMF Refactor - Thesis Extension
+      EMF Refactor - Ecore Smells Extension
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
