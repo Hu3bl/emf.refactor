@@ -50,7 +50,10 @@ public final class NAPTC implements IMetricCalculator {
 		//if(dataType.isInstance(EcorePackage.Literals.ESTRING)) { return true; }	
 		//if(dataType.getName().equals("EInt")) return true;
 		
-		if(dataType.getInstanceClass().isPrimitive()) { return true; }
+		if(dataType.getInstanceClass() != null)
+		{
+			if(dataType.getInstanceClass().isPrimitive()) { return true; }
+		}
 		
 		return false;
 	}
