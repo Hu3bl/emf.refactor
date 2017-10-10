@@ -6,6 +6,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.refactor.metrics.interfaces.IMetricCalculator;
 
@@ -20,10 +21,10 @@ public final class NEATC implements IMetricCalculator {
 		
 	@Override
 	public double calculate() {	
-		org.eclipse.emf.ecore.EClass cl = (org.eclipse.emf.ecore.EClass) context.get(0);
+		EClass cl = (EClass) context.get(0);
 		double result = 0.0;
 		
-		EList<org.eclipse.emf.ecore.EClass> otherClasses = getOtherClassses(cl);
+		EList<EClass> otherClasses = getOtherClassses(cl);
 		if (otherClasses.isEmpty()) return result;
 		Double[] maxEqualAttributes = new Double[otherClasses.size()];
 		for (int i=0; i < maxEqualAttributes.length; i++) maxEqualAttributes[i] = 0.0;
@@ -49,7 +50,7 @@ public final class NEATC implements IMetricCalculator {
 		return result;
 	}
 
-	private boolean containsEqualAttribute(org.eclipse.emf.ecore.EClass c, EAttribute attr) {
+	private boolean containsEqualAttribute(EClass c, EAttribute attr) {
 		boolean contains = false;
 		for (EAttribute att : c.getEAttributes()) {
 			if (haveEqualNames(attr, att) 
@@ -77,13 +78,13 @@ public final class NEATC implements IMetricCalculator {
 		return att.getName().equals(attr.getName());
 	}
 
-	private EList<org.eclipse.emf.ecore.EClass> getOtherClassses(org.eclipse.emf.ecore.EClass cl) {
-		EList<org.eclipse.emf.ecore.EClass> otherClasses = new BasicEList<org.eclipse.emf.ecore.EClass>();
+	private EList<EClass> getOtherClassses(EClass cl) {
+		EList<EClass> otherClasses = new BasicEList<EClass>();
 		TreeIterator<EObject> iter = getRoot(context.get(0)).eAllContents();
 		while (iter.hasNext()) {
 			EObject eObject = iter.next();
-			if (eObject instanceof org.eclipse.emf.ecore.EClass) {
-				org.eclipse.emf.ecore.EClass otherClass = (org.eclipse.emf.ecore.EClass) eObject;
+			if (eObject instanceof EClass) {
+				EClass otherClass = (EClass) eObject;
 				if (!otherClass.equals(cl)) {
 					otherClasses.add(otherClass);
 				}
