@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 
-import thesis.detection.smells.util.DetectionHelper;
+import edu.kit.ipd.sdq.emf.refactor.smells.util.DetectionHelper;
 
 /**
  * This clas investigates if a subclass defines a specialization relation to a already refered type.

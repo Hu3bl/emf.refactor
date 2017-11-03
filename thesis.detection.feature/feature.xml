@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="thesis.detection.feature"
+      id="edu.kit.ipd.sdq.emf.refactor.feature"
       label="EMF Refactor - Ecore Smells Extension"
       version="1.0.0.qualifier">
 

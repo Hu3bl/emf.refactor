@@ -1,4 +1,4 @@
-package thesis.detection.smells;
+package edu.kit.ipd.sdq.emf.refactor.smells;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

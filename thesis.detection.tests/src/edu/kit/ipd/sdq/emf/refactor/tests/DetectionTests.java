@@ -1,11 +1,11 @@
-package thesis.detection.tests;
+package edu.kit.ipd.sdq.emf.refactor.tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import thesis.detection.util.EcoreBuilder;
-import thesis.detection.util.SmellFinder;
+import edu.kit.ipd.sdq.emf.refactor.tests.util.EcoreBuilder;
+import edu.kit.ipd.sdq.emf.refactor.tests.util.SmellFinder;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;

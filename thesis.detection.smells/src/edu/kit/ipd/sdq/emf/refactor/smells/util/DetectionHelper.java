@@ -1,4 +1,4 @@
-package thesis.detection.smells.util;
+package edu.kit.ipd.sdq.emf.refactor.smells.util;
 
 import java.util.ArrayList;
 import java.util.List;

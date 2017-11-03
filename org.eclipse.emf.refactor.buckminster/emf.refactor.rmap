@@ -4,7 +4,7 @@
   <rm:locator pattern="^org\.eclipse\.emf\.refactor(\..+)?" searchPathRef="emf.refactor.local"/>
   <rm:locator pattern="^org\.eclipse\.emf\.henshin(\..+)?" searchPathRef="henshin.p2"/>
   <rm:locator pattern="^org\.eclipse(\..+)?" searchPathRef="oxygen.p2"/>
-  <rm:locator pattern="^thesis(\..+)?" searchPathRef="emf.refactor.local"/>
+    <rm:locator pattern="^edu\.kit\.ipd\.sdq\.emf\.refactor(\..+)?" searchPathRef="emf.refactor.local"/>
   <rm:locator searchPathRef="platform" failOnError="false"/>
   <rm:locator searchPathRef="oxygen" failOnError="false"/>
   <rm:locator searchPathRef="orbit"/>

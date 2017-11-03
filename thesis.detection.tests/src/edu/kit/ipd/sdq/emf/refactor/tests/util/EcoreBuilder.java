@@ -1,4 +1,4 @@
-package thesis.detection.util;
+package edu.kit.ipd.sdq.emf.refactor.tests.util;
 
 import java.io.IOException;
 import java.util.Collections;

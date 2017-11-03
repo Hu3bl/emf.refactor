@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 
-import thesis.detection.smells.util.DetectionHelper;
+import edu.kit.ipd.sdq.emf.refactor.smells.util.DetectionHelper;
 
 /**
  * This class checks if there is a cylce in the hierarchy
