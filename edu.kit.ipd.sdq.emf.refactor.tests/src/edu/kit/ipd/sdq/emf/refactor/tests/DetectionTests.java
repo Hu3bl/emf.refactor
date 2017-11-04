@@ -511,4 +511,26 @@ public class DetectionTests {
 		assertNotNull(result);
 		assertEquals(4, result.getModelelements().size());
 	}
+	
+	@Test
+	public void validateLateHierachyDetection() 
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass superType = EcoreBuilder.createEClass("SuperType");
+		testPackage.getEClassifiers().add(superType);
+		
+		EClass subType = EcoreBuilder.createEClass("SubType");
+		testPackage.getEClassifiers().add(subType);
+		subType.setAbstract(true);
+		EcoreBuilder.addSuperType(subType, testPackage, superType.getName());
+		
+		EcoreBuilder.savePackageToFile(testPackage, "LateHierarchy.ecore");	
+		
+		Result result = SmellFinder.findSmell(new LateHierarchy(), testPackage);
+		assertNotNull(result);
+		assertEquals(1, result.getModelelements().size());
+	}
 }
