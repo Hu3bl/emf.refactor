@@ -32,7 +32,7 @@
 	<feature id="org.eclipse.emf.refactor.examples.compositional.feature">
 	    	<category name="EMF Refactor - Advanced Examples for Ecore and UML2.4 (Incubation)"/>
 	   	</feature>
-	<feature id="thesis.detection.feature">
+	<feature id="edu.kit.ipd.sdq.emf.refactor.feature">
 	 	<category name="EMF Refactor - Ecore Smells Extension"/>
 	</feature>
    	<category-def name="EMF Refactor (Incubation)" label="EMF Refactor (Incubation)"/>
