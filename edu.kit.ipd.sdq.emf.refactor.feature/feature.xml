@@ -130,21 +130,21 @@ Java and all Java-based trademarks are trademarks of Sun Microsystems, Inc. in t
    </requires>
 
    <plugin
-         id="thesis.detection.metrics"
+         id="edu.kit.ipd.sdq.emf.refactor.metrics"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="thesis.detection.smells"
+         id="edu.kit.ipd.sdq.emf.refactor.smells"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="thesis.detection.tests"
+         id="edu.kit.ipd.sdq.emf.refactor.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"
