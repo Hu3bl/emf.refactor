@@ -499,17 +499,72 @@ public class DetectionTests {
 		testPackage.getEClassifiers().add(subSubType);
 		EcoreBuilder.addSuperType(subSubType, testPackage, subType.getName());
 		
-		EClass subSubSubType = EcoreBuilder.createEClass("SubSubSubType");
-		testPackage.getEClassifiers().add(subSubSubType);
-		EcoreBuilder.addSuperType(subSubSubType, testPackage, subSubType.getName());
-		
-		EcoreBuilder.addSuperType(superType, testPackage, "SubSubSubType");
+		EcoreBuilder.addReference(superType, "knownDerived", subSubType, false, 0, 1);
 		
 		EcoreBuilder.savePackageToFile(testPackage, "CyclicHierarchy.ecore");	
 		
 		Result result = SmellFinder.findSmell(new CyclicHierarchy(), testPackage);
 		assertNotNull(result);
-		assertEquals(4, result.getModelelements().size());
+		assertEquals(1, result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateCyclicDependentModularizationDetection()
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass superType = EcoreBuilder.createEClass("SuperType");
+		testPackage.getEClassifiers().add(superType);
+		
+		EClass subType = EcoreBuilder.createEClass("SubType");
+		testPackage.getEClassifiers().add(subType);
+		EcoreBuilder.addSuperType(subType, testPackage, superType.getName());
+					
+		EClass anotherType = EcoreBuilder.createEClass("AnotherType");
+		testPackage.getEClassifiers().add(anotherType);
+		
+		EClass anotherType2 = EcoreBuilder.createEClass("AnotherType2");
+		testPackage.getEClassifiers().add(anotherType2);
+		
+		EcoreBuilder.addReference(superType, "TestReference", anotherType, false, 0, 1);
+		EcoreBuilder.addReference(anotherType, "TestReference", anotherType2, false, 0, 1);
+		EcoreBuilder.addReference(anotherType2, "TestReference", subType, false, 0, 1);
+		
+		EcoreBuilder.savePackageToFile(testPackage, "CyclicDependentModularizationHierarchy.ecore");	
+		
+		Result result = SmellFinder.findSmell(new CyclicDependentModularization(), testPackage);
+		assertNotNull(result);
+		assertEquals(3, result.getModelelements().size());
+	}
+	
+	@Test
+	public void validateCyclicDependentModularizationDetection_NoCycle()
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass superType = EcoreBuilder.createEClass("SuperType");
+		testPackage.getEClassifiers().add(superType);
+		
+		EClass subType = EcoreBuilder.createEClass("SubType");
+		testPackage.getEClassifiers().add(subType);
+		EcoreBuilder.addSuperType(subType, testPackage, superType.getName());
+					
+		EClass anotherType = EcoreBuilder.createEClass("AnotherType");
+		testPackage.getEClassifiers().add(anotherType);
+		
+		EClass anotherType2 = EcoreBuilder.createEClass("AnotherType2");
+		testPackage.getEClassifiers().add(anotherType2);
+		
+		EcoreBuilder.addReference(superType, "TestReference", anotherType, false, 0, 1);
+		EcoreBuilder.addReference(anotherType, "TestReference", anotherType2, false, 0, 1);
+		
+		Result result = SmellFinder.findSmell(new CyclicDependentModularization(), testPackage);
+		assertNotNull(result);
+		assertEquals(0, result.getModelelements().size());
 	}
 	
 	@Test

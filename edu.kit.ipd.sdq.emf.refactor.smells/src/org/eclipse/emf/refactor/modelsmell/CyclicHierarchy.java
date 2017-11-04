@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.refactor.smells.interfaces.IModelSmellFinder;
 
 import edu.kit.ipd.sdq.emf.refactor.smells.util.DetectionHelper;
@@ -37,40 +38,18 @@ public final class CyclicHierarchy implements IModelSmellFinder {
 	
 	private boolean hasClassACyclicHierarchy(EClass currentClass)
 	{
-		LinkedList<EClass> visitedClasses = new LinkedList<EClass>();
-		
-		for(EClass superType : getAllESuperTypes(currentClass, visitedClasses))
+		for(EReference reference : currentClass.getEReferences())
 		{
-			if(superType == currentClass)
+			EClass referencedClass = reference.getEReferenceType();
+			for(EClass superType : referencedClass.getEAllSuperTypes())
 			{
-				return true;
+				if(superType.equals(currentClass))
+				{
+					return true;
+				}
 			}
 		}
 		
 		return false;
 	}
-	
-	private LinkedList<EClass> getAllESuperTypes(EClass currentClass, LinkedList<EClass> visitedClasses)
-	{
-		LinkedList<EClass> superTypes = new LinkedList<EClass>();
-		
-		for(EClass superType : currentClass.getESuperTypes())
-		{
-			if(!superTypes.contains(superType))
-			{
-				superTypes.add(superType);
-			}
-		}
-		visitedClasses.add(currentClass);
-		
-		for(EClass superType : currentClass.getESuperTypes())
-		{
-			if(!visitedClasses.contains(superType))
-			{
-				superTypes.addAll(getAllESuperTypes(superType, visitedClasses));
-			}
-		}
-		
-		return superTypes;
-	}	
 }

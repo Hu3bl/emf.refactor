@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
-Bundle-SymbolicName: edu.kit.ipd.sdq.emf.refactor.smells;singleton:=true
+Bundle-SymbolicName: edu.kit.ipd.sdq.emf.refactor.smells;singleton:=tr
+ ue
 Export-Package: org.eclipse.emf.refactor.modelsmell
 Bundle-Name: Detection
 Bundle-Version: 1.0.0.qualifier
