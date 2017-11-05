@@ -180,6 +180,33 @@ public class DetectionTests {
 	}
 	
 	@Test
+	public void validateMultipathHierarchyDetection_OneDirectOneIndirect() 
+	{
+		EcoreBuilder.initStandalone();
+		
+		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
+		
+		EClass supersuperClass = EcoreBuilder.createEClass("SuperSuperClass");
+		testPackage.getEClassifiers().add(supersuperClass);
+		
+		EClass superClass = EcoreBuilder.createEClass("SuperClass");
+		testPackage.getEClassifiers().add(superClass);
+		EcoreBuilder.addSuperType(superClass, testPackage, "SuperSuperClass");
+				
+		EClass derivedClass = EcoreBuilder.createEClass("DerivedClass");
+		testPackage.getEClassifiers().add(derivedClass);
+		EcoreBuilder.addSuperType(derivedClass, testPackage, "SuperClass");
+		EcoreBuilder.addSuperType(derivedClass, testPackage, "SuperSuperClass");
+		
+		EcoreBuilder.savePackageToFile(testPackage, "MultipathHierarchy2.ecore");
+				
+		Result result = SmellFinder.findSmell(new MultipathHierarchy(), testPackage);
+		assertNotNull(result);
+		assertEquals(1, result.getModelelements().size());
+		assertEquals(3, result.getModelelements().get(0).size());
+	}
+	
+	@Test
 	public void validateUnutilizedAbstractionUnusedClassDetection_UnusedClasses_BothClassesAreDetected()
 	{
 		EcoreBuilder.initStandalone();
@@ -267,7 +294,7 @@ public class DetectionTests {
 		
 		EClass superClass = EcoreBuilder.createEClass("SuperClass");
 		testPackage.getEClassifiers().add(superClass);
-		EcoreBuilder.addReference(superClass, "testRef", eEnum, false, 0, 1);
+		EcoreBuilder.addAttribute(superClass, "testEnum", eEnum, false, 0, 1);
 		
 		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedEnumeration(), testPackage);
 		assertNotNull(result);

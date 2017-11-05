@@ -3,6 +3,7 @@ package org.eclipse.emf.refactor.modelsmell;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
@@ -40,12 +41,19 @@ public final class UnutilizedAbstraction_UnusedEnumeration implements IModelSmel
 	{
 		for(EClass clazz : allClasses)
 		{
-			for(EReference reference : clazz.getEAllReferences())
+			/*for(EReference reference : clazz.getEAllReferences())
 			{
 				if(reference.getEType().equals(currentEnum))
 				{
 					return true;
 				}				
+			}*/
+			for(EAttribute attribute : clazz.getEAllAttributes())
+			{
+				if(attribute.getEAttributeType().equals(currentEnum))
+				{
+					return true;
+				}
 			}
 		}
 		return false;

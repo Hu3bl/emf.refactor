@@ -35,7 +35,10 @@ public final class MultipathHierarchy implements IModelSmellFinder {
 						EClass cl2 = cl.getESuperTypes().get(j);
 						
 						List<EClass> superclasses1 = DetectionHelper.getAllESuperclasses(cl1);
+						// add supertype itself also to the list, as the hierarchy must not have the form of a diamond
+						superclasses1.add(cl1);
 						List<EClass> superclasses2 = DetectionHelper.getAllESuperclasses(cl2);
+						superclasses2.add(cl2);
 						for (EClass superclass : superclasses1) 
 						{
 							if (superclasses2.contains(superclass)) 
@@ -43,9 +46,18 @@ public final class MultipathHierarchy implements IModelSmellFinder {
 								LinkedList<EObject> result = new LinkedList<EObject>();
 								// add class itself, the starting classes of the different pathes and the endpoint to the result
 								result.add(cl);
-								result.add(cl1);
-								result.add(cl2);
-								result.add(superclass);
+								if(!result.contains(cl1))
+								{
+									result.add(cl1);
+								}
+								if(!result.contains(cl2))
+								{
+									result.add(cl2);
+								}						
+								if(!result.contains(superclass))
+								{
+									result.add(superclass);
+								}								
 								results.add(result);
 							}
 						}
