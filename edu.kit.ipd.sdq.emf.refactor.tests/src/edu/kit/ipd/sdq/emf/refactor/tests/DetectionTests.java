@@ -190,6 +190,8 @@ public class DetectionTests {
 		EClass subClass = EcoreBuilder.createEClass("SubClass");
 		testPackage.getEClassifiers().add(subClass);
 		
+		EcoreBuilder.savePackageToFile(testPackage, "UnutilizedAbstraction_UnusedClass1.ecore");
+		
 		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedClasses(), testPackage);
 		assertNotNull(result);
 		assertEquals(2, result.getModelelements().size());
@@ -226,6 +228,8 @@ public class DetectionTests {
 		testPackage.getEClassifiers().add(subClass);
 		EcoreBuilder.addReference(subClass, "testReference", superClass, false, 0, 1);
 		
+		EcoreBuilder.savePackageToFile(testPackage, "UnutilizedAbstraction_UnusedClass2.ecore");
+		
 		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedClasses(), testPackage);
 		assertNotNull(result);
 		assertEquals(1, result.getModelelements().size());
@@ -244,13 +248,15 @@ public class DetectionTests {
 		EClass superClass = EcoreBuilder.createEClass("SuperClass");
 		testPackage.getEClassifiers().add(superClass);
 		
+		EcoreBuilder.savePackageToFile(testPackage, "UnutilizedAbstraction_UnusedEnum.ecore");
+		
 		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedEnumeration(), testPackage);
 		assertNotNull(result);
 		assertEquals(1, result.getModelelements().size());
 	}
 	
 	@Test
-	public void validateUnutilizedAbstractionUnusedEnumDetection_UsedAsType_NoClassDetected()
+	public void validateUnutilizedAbstractionUnusedEnumDetection_UsedAsType_NoEnumDetected()
 	{
 		EcoreBuilder.initStandalone();
 		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
@@ -337,7 +343,7 @@ public class DetectionTests {
 		EcoreBuilder.addReference(firstClass, "testReference", secondClass, false, 0, 1);
 		EcoreBuilder.addReference(firstSubClass, "specializationReference", secondSubClass, false, 0, 1);	
 		
-		EcoreBuilder.savePackageToFile(testPackage, "SpecializationAggregation.ecore");
+		EcoreBuilder.savePackageToFile(testPackage, "SpecializationAggregation1.ecore");
 		
 		Result result = SmellFinder.findSmell(new SpecializationAggregation(), testPackage);
 		assertNotNull(result);
@@ -366,6 +372,8 @@ public class DetectionTests {
 		
 		EcoreBuilder.addReference(firstClass, "testReference", secondClass, false, 0, 1);
 		EcoreBuilder.addReference(firstSubClass, "specializationReference", secondClass, false, 0, 1);	
+		
+		EcoreBuilder.savePackageToFile(testPackage, "SpecializationAggregation2.ecore");
 		
 		Result result = SmellFinder.findSmell(new SpecializationAggregation(), testPackage);
 		assertNotNull(result);
