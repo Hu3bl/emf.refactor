@@ -227,7 +227,7 @@ public class DetectionTests {
 	}
 	
 	@Test
-	public void validateUnutilizedAbstractionUnusedClassDetection_UsedAsSuperType_NoClassDetected()
+	public void validateUnutilizedAbstractionUnusedClassDetection_UsedAsSuperType_SubClassDetected()
 	{
 		EcoreBuilder.initStandalone();
 		EPackage testPackage = EcoreBuilder.createPackage("testPackage", "testPackage", "http://testPackage");
@@ -240,7 +240,7 @@ public class DetectionTests {
 		
 		Result result = SmellFinder.findSmell(new UnutilizedAbstraction_UnusedClasses(), testPackage);
 		assertNotNull(result);
-		assertEquals(0, result.getModelelements().size());
+		assertEquals(1, result.getModelelements().size());
 	}
 	
 	@Test

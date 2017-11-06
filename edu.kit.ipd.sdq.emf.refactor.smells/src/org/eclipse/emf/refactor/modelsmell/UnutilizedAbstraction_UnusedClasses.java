@@ -37,7 +37,7 @@ public final class UnutilizedAbstraction_UnusedClasses implements IModelSmellFin
 	private boolean isClassUsed(EClass currentClass, List<EClass> allClasses)
 	{
 		boolean result = false;
-		result |= hasClassSuperTypesOrRealizesInterface(currentClass);
+		//result |= hasClassSuperTypesOrRealizesInterface(currentClass);
 		result |= hasSubClasses(currentClass, allClasses);
 		result |= isUsedAsType(currentClass, allClasses);		
 		return result;
